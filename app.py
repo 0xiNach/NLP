@@ -9,11 +9,16 @@ import tensorflow_text
 
 DIR = './'
 
-interpreter = tf.lite.Interpreter(model_path='model.tflite')
-interpreter.allocate_tensors()
-predict = interpreter.get_signature_runner('serving_default')
 
-model = lambda x: predict(input_1=np.expand_dims([x], 0))['output_1']
+@st.cache(allow_output_mutation=True)
+def load_model():
+    interpreter = tf.lite.Interpreter(model_path='model.tflite')
+    interpreter.allocate_tensors()
+    predict = interpreter.get_signature_runner('serving_default')
+    return lambda x: predict(input_1=np.expand_dims([x], 0))['output_1']
+
+
+model = load_model()
 
 fernet = Fernet(SECRET_KEY)
 
