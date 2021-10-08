@@ -20,7 +20,7 @@ def load_model():
 
 model = load_model()
 
-fernet = Fernet(SECRET_KEY)
+fernet = Fernet(st.secrets['SECRET_KEY'])
 
 # opening the encrypted file
 with open('class_encrypted.json', 'rb') as enc_file:
