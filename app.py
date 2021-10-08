@@ -53,9 +53,9 @@ if features:
         label = classes[np.argmax(result)]
 
         if prob > slider/100:
-            st.success(f'{feature} --- {label} ---- {prob}')
+            st.success(f'Name: {feature} ---  FT label: {label} ---- Confidence score: {prob}')
         else:
-            st.warning(f'{feature} --- {label} ---- {prob}')
+            st.warning(f'Name: {feature} ---  FT label: {label} ---- Confidence score: {prob}')
 
 
 
