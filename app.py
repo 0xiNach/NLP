@@ -7,7 +7,10 @@ import streamlit as st
 import tensorflow as tf
 import tensorflow_text
 
-DIR = './'
+
+st.set_page_config(page_title='NLP', layout='centered')
+
+st.title('NLP')
 
 
 @st.cache(allow_output_mutation=True)
@@ -28,10 +31,6 @@ with open('class_encrypted.json', 'rb') as enc_file:
 
 # decrypting the file
 classes = json.loads(fernet.decrypt(encrypted))
-
-st.set_page_config(page_title='NLP', layout='centered')
-
-st.title('NLP')
 
 slider = st.sidebar.slider('Confidence Threshold (default 80%)', 0, 100, 80)
 
